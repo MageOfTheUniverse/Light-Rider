@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://carwcawsawhjo"]
+
+[ext_resource type="Script" uid="uid://lyfo0da22dll" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b568bdm5hgjx0" path="res://rider.tscn" id="2_h2yge"]
+
+[sub_resource type="Environment" id="Environment_l52gf"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.2
+glow_blend_mode = 0
+
+[node name="Main" type="Node2D" unique_id=704123960]
+script = ExtResource("1_0xm2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=560720019]
+environment = SubResource("Environment_l52gf")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1548067445]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(128, 128)
+
+[node name="TrackContainer" type="Node2D" parent="." unique_id=646729989]
+
+[node name="Rider" parent="." unique_id=190504246 instance=ExtResource("2_h2yge")]
+position = Vector2(33, 46)
+
+[node name="StuckTimer" type="Timer" parent="." unique_id=1451804214]
+wait_time = 3.0
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1131200647]
+
+[node name="StuckLabel" type="Label" parent="CanvasLayer" unique_id=645181878]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.96, 0.46400002, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="KeyLabel" type="Label" parent="CanvasLayer" unique_id=1320871849]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -216.0
+offset_right = 3.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0.96, 0.6719998, 1)
+text = "[?] As gravity pulls you down, only one direction will 
+build your score, can you guess which? [?]
+Hint: Follow the horizon.....
+---------------------------------------------------------------
+- Space: Play / Pause
+- Left-Click + Drag: Draw Track
+- Esc: Reset Rider
+- Straight lines make you......BOUNCE ;)"
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer" unique_id=1943623567]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -386.0
+offset_top = -270.0
+offset_right = 2.0
+offset_bottom = -178.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9607843, 0, 0.015686275, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 40
+text = "-------Light Rider-------"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1900174527]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+pivot_offset = Vector2(-16, 16)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
+
+[node name="ProgressTimer" type="Timer" parent="." unique_id=1471124929]
+wait_time = 30.0
+one_shot = true

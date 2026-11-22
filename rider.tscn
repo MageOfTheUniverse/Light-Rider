@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b568bdm5hgjx0"]
+
+[ext_resource type="Script" uid="uid://cn3ftwx21k2v" path="res://trail.gd" id="1_bp43r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l52gf"]
+friction = 0.05
+bounce = 0.9
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l52gf"]
+
+[sub_resource type="Curve" id="Curve_l52gf"]
+_data = [Vector2(0.0021186396, 1), 0.0, 0.0, 0, 0, Vector2(0.0042372867, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Rider" type="RigidBody2D" unique_id=190504246]
+physics_material_override = SubResource("PhysicsMaterial_l52gf")
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1130125557]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_l52gf")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1763420312]
+modulate = Color(2.5, 0.6, 0.2, 1)
+position = Vector2(4, 1)
+polygon = PackedVector2Array(-5, -12, -20, 0, -5, 10, 18, -2, 9, -2)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1546356982]
+rotation_smoothing_enabled = true
+
+[node name="Trail" type="Line2D" parent="." unique_id=1996979926]
+top_level = true
+width = 8.0
+width_curve = SubResource("Curve_l52gf")
+default_color = Color(2.5, 0.6, 0.2, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_bp43r")
